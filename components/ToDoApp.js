@@ -74,11 +74,11 @@ export default function ToDoApp() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex-col flex min-w-40 max-w-fit gap-2">
         {todoList.map((todo, index) => (
           <div
             key={index}
-            className="flex gap-1 bg-slate-100 shadow-md p-2 rounded-md"
+            className="flex gap-1 bg-slate-100 w-full shadow-md p-2 rounded-md"
           >
             <input
               type="checkbox"
@@ -98,16 +98,18 @@ export default function ToDoApp() {
                 </button>
               </div>
             ) : (
-              <div className="flex gap-1">
+              <div className="flex gap-1 justify-between w-full">
                 <span className={`${todo.completed && "line-through"}`}>
                   {todo.text}
                 </span>
-                <button onClick={() => editTodo(index)}>
-                  <Edit color="warning" />
-                </button>
-                <button onClick={() => deleteTodo(index)}>
-                  <DeleteForever color="error" />
-                </button>
+                <div>
+                  <button onClick={() => editTodo(index)}>
+                    <Edit color="warning" />
+                  </button>
+                  <button onClick={() => deleteTodo(index)}>
+                    <DeleteForever color="error" />
+                  </button>
+                </div>
               </div>
             )}
           </div>
